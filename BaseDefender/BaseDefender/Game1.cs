@@ -36,6 +36,7 @@ namespace BaseDefender
         Menu menu;
         Input input;
         public static GameStates gameStates;
+        Texture2D[] enemyTexture = new Texture2D[2];
 
         public Game1()
         {
@@ -64,25 +65,23 @@ namespace BaseDefender
 
             level.AddTexture(grass);
             level.AddTexture(path);
-            Texture2D enemyTexture = Content.Load<Texture2D>("enemy");
+
+            enemyTexture[0] = Content.Load<Texture2D>("enemy"); 
+            enemyTexture[1]=Content.Load<Texture2D>("enemy2");
 
             arial = Content.Load<SpriteFont>("Arial");
             lucida = Content.Load<SpriteFont>("Lucida");
-            /*enemy1 = new Enemy(enemyTexture, Vector2.Zero, 100, 10, 0.5f);
-            enemy1.SetWaypoints(level.Waypoints);
-            wave = new Wave(0, 10, level, enemyTexture);
-            wave.Start();
-            Texture2D towerTexture = Content.Load<Texture2D>("tower");
-            tower = new Tower(towerTexture, Vector2.Zero);
-            player = new Player(level, towerTexture);*/
-
 
             Texture2D towerTexture = Content.Load<Texture2D>("tower");
             Texture2D bulletTexture = Content.Load<Texture2D>("bullet");
+
             player = new Player(level, towerTexture, bulletTexture);
+
             waveManager = new WaveManager(player, level, 30, enemyTexture);
-            Texture2D topBar = Content.Load<Texture2D>("toolbar");
+
             SpriteFont font = Content.Load<SpriteFont>("Arial");
+
+            Texture2D topBar = Content.Load<Texture2D>("toolbar");
             toolbar = new Toolbar(topBar, font, new Vector2(0, level.Height * 32));
 
             Texture2D arrowNormal = Content.Load<Texture2D>("GUI\\Arrow Tower\\arrow normal");
@@ -176,7 +175,8 @@ namespace BaseDefender
             if (gameStates == GameStates.Menu)
             {
                 Texture2D texture = Content.Load<Texture2D>("start_screen");
-                spriteBatch.Draw(texture, new Vector2(0f, 0f), Color.White);
+                //spriteBatch.Draw(texture, new Vector2(0f, 0f), Color.White);
+                spriteBatch.Draw(texture, new Vector2(0f, 0f), null, Color.White, 0, new Vector2(0f, 0f), 9/8f, SpriteEffects.None, 0);
             }
 
             else if (gameStates == GameStates.Running)

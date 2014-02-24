@@ -11,14 +11,15 @@ namespace BaseDefender
     {
         int[,] map = new int[,] 
         {
-            {0,0,1,0,0,0,0,0,},
-            {0,0,1,1,0,0,0,0,},
-            {0,0,0,1,1,0,0,0,},
-            {0,0,0,0,1,0,0,0,},
-            {0,0,0,1,1,0,0,0,},
-            {0,0,1,1,0,0,0,0,},
-            {0,0,1,0,0,0,0,0,},
-            {0,0,1,1,1,1,1,1,},
+            {0,0,1,0,0,0,0,0,0,},
+            {0,0,1,0,0,0,0,0,0,},
+            {0,0,1,1,1,1,1,1,1,},
+            {0,0,0,0,0,0,0,0,1,},
+            {1,1,1,1,1,1,1,1,1,},
+            {1,0,0,0,0,0,0,0,0,},
+            {1,1,1,1,1,1,1,1,1,},
+            {0,0,0,0,0,0,0,0,1,},
+            {1,1,1,1,1,1,1,1,1,},
         };
         private Queue<Vector2> waypoints = new Queue<Vector2>();
 
@@ -40,16 +41,14 @@ namespace BaseDefender
         public Level()
         {
             waypoints.Enqueue(new Vector2(2, 0) * 32);
-            waypoints.Enqueue(new Vector2(2, 1) * 32);
-            waypoints.Enqueue(new Vector2(3, 1) * 32);
-            waypoints.Enqueue(new Vector2(3, 2) * 32);
-            waypoints.Enqueue(new Vector2(4, 2) * 32);
-            waypoints.Enqueue(new Vector2(4, 4) * 32);
-            waypoints.Enqueue(new Vector2(3, 4) * 32);
-            waypoints.Enqueue(new Vector2(3, 5) * 32);
-            waypoints.Enqueue(new Vector2(2, 5) * 32);
-            waypoints.Enqueue(new Vector2(2, 7) * 32);
-            waypoints.Enqueue(new Vector2(7, 7) * 32);
+            waypoints.Enqueue(new Vector2(2, 2) * 32);
+            waypoints.Enqueue(new Vector2(8, 2) * 32);
+            waypoints.Enqueue(new Vector2(8, 4) * 32);
+            waypoints.Enqueue(new Vector2(0, 4) * 32);
+            waypoints.Enqueue(new Vector2(0, 6) * 32);
+            waypoints.Enqueue(new Vector2(8, 6) * 32);
+            waypoints.Enqueue(new Vector2(8, 8) * 32);
+            waypoints.Enqueue(new Vector2(0, 8) * 32);
         }
 
 
