@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseDefender", "BaseDefender\BaseDefender\BaseDefender.csproj", "{4002FAE4-1CB4-489E-B2AE-497FE3B4A392}"
+EndProject
+Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "BaseDefenderContent", "BaseDefender\BaseDefenderContent\BaseDefenderContent.contentproj", "{BF8FE60D-B352-4B99-89F8-0AB1355ECF8E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4002FAE4-1CB4-489E-B2AE-497FE3B4A392}.Debug|x86.ActiveCfg = Debug|x86
+		{4002FAE4-1CB4-489E-B2AE-497FE3B4A392}.Debug|x86.Build.0 = Debug|x86
+		{4002FAE4-1CB4-489E-B2AE-497FE3B4A392}.Release|x86.ActiveCfg = Release|x86
+		{4002FAE4-1CB4-489E-B2AE-497FE3B4A392}.Release|x86.Build.0 = Release|x86
+		{BF8FE60D-B352-4B99-89F8-0AB1355ECF8E}.Debug|x86.ActiveCfg = Debug|x86
+		{BF8FE60D-B352-4B99-89F8-0AB1355ECF8E}.Release|x86.ActiveCfg = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
