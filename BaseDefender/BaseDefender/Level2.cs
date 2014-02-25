@@ -7,17 +7,17 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace BaseDefender
 {
-    public class Level
+    public class Level2
     {
         int[,] map = new int[,] 
         {
             {0,0,1,0,0,0,0,0,0,},
             {0,0,1,0,0,0,0,0,0,},
+            {0,0,1,0,0,0,0,0,0,},
+            {0,0,1,0,0,0,0,0,0,},
+            {0,0,1,0,0,0,0,0,0,},
+            {0,0,1,0,0,0,0,0,0,},
             {0,0,1,1,1,1,1,1,1,},
-            {0,0,0,0,0,0,0,0,1,},
-            {1,1,1,1,1,1,1,1,1,},
-            {1,0,0,0,0,0,0,0,0,},
-            {1,1,1,1,1,1,1,1,1,},
             {0,0,0,0,0,0,0,0,1,},
             {1,1,1,1,1,1,1,1,1,},
         };
@@ -38,14 +38,10 @@ namespace BaseDefender
             get { return map.GetLength(0); }
         }
 
-        public Level()
+        public Level2()
         {
             waypoints.Enqueue(new Vector2(2, 0) * 32);
-            waypoints.Enqueue(new Vector2(2, 2) * 32);
-            waypoints.Enqueue(new Vector2(8, 2) * 32);
-            waypoints.Enqueue(new Vector2(8, 4) * 32);
-            waypoints.Enqueue(new Vector2(0, 4) * 32);
-            waypoints.Enqueue(new Vector2(0, 6) * 32);
+            waypoints.Enqueue(new Vector2(2, 6) * 32);
             waypoints.Enqueue(new Vector2(8, 6) * 32);
             waypoints.Enqueue(new Vector2(8, 8) * 32);
             waypoints.Enqueue(new Vector2(0, 8) * 32);

@@ -26,38 +26,6 @@ namespace BaseDefender
 
         }
 
-        /*public bool Up
-        {
-            get
-            {
-                if (keyboardState.IsKeyDown(Keys.Up) && lastState.IsKeyUp(Keys.Up))
-                {
-                    return true;
-                }
-
-                else
-                {
-                    return false;
-                }
-            }
-        }
-
-        public bool Down
-        {
-            get
-            {
-                if (keyboardState.IsKeyDown(Keys.Down) && lastState.IsKeyUp(Keys.Down))
-                {
-                    return true;
-                }
-
-                else
-                {
-                    return false;
-                }
-            }
-        }
-        */
         public bool Enter
         {
             get
@@ -74,6 +42,7 @@ namespace BaseDefender
                 }
             }
         }
+
         public bool Escape
         {
             get
@@ -90,20 +59,5 @@ namespace BaseDefender
                 }
             }
         }
-
-        /*public bool MenuSelect
-        {
-            get
-            {
-                if(keyboardState.IsKeyDown(Keys.Enter) && lastState.IsKeyUp(Keys.Enter))
-                {
-                    return true;
-                }// && lastState.IsKeyUp(Keys.Enter);
-                else
-                {
-                    return false;
-                }
-            }
-        }*/
     }
 }

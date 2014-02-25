@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Content;
 
 namespace BaseDefender
 {
@@ -26,7 +27,8 @@ namespace BaseDefender
         private int tileX;
         private int tileY;
         private Texture2D bulletTexture;
-        private Level level;
+        private Level1 level;
+        private ContentManager content;
 
         public int Money
         {
@@ -46,11 +48,12 @@ namespace BaseDefender
             }
         }
 
-        public Player(Level level, Texture2D towerTexture, Texture2D bulletTexture)
+        public Player(Level1 level, Texture2D towerTexture, Texture2D bulletTexture, ContentManager content)
         {
             this.level = level;
             this.towerTexture = towerTexture;
             this.bulletTexture = bulletTexture;
+            this.content = content;
         }
 
         public string NewTowerType
@@ -126,7 +129,7 @@ namespace BaseDefender
                 case "Arrow Tower":
                     {
                         towerToAdd = new ArrowTower(towerTexture,
-                            bulletTexture, new Vector2(tileX, tileY));
+                            bulletTexture, new Vector2(tileX, tileY),content);
                         break;
                     }
             }

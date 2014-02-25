@@ -23,7 +23,7 @@ namespace BaseDefender
 
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        Level level = new Level();
+        Level1 level = new Level1();
         //Tower tower;
         Player player;
         //Enemy enemy1;
@@ -37,6 +37,7 @@ namespace BaseDefender
         Input input;
         public static GameStates gameStates;
         Texture2D[] enemyTexture = new Texture2D[2];
+        public SoundEffect bulletSound;
 
         public Game1()
         {
@@ -74,8 +75,8 @@ namespace BaseDefender
 
             Texture2D towerTexture = Content.Load<Texture2D>("tower");
             Texture2D bulletTexture = Content.Load<Texture2D>("bullet");
-
-            player = new Player(level, towerTexture, bulletTexture);
+            bulletSound = Content.Load<SoundEffect>("gunShot");
+            player = new Player(level, towerTexture, bulletTexture,Content);
 
             waveManager = new WaveManager(player, level, 30, enemyTexture);
 
@@ -112,27 +113,6 @@ namespace BaseDefender
 
             if (gameStates == GameStates.Menu)
             {
-                /*if (input.Down)
-                {
-                    menu.Iterator++;
-                }
-
-                if (input.Up)
-                {
-                    menu.Iterator--;
-                }
-
-                if (input.MenuSelect)
-                {
-                    if (menu.Iterator == 0)
-                    {
-                        gameStates = GameStates.Running;
-                    }
-                    if (menu.Iterator == 1)
-                    {
-                        this.Exit();
-                    }
-                }*/
 
                 if (input.Enter)
                 {
