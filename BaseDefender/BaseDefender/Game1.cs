@@ -23,7 +23,7 @@ namespace BaseDefender
 
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        Level1 level = new Level1();
+        Level level = new Level();
         //Tower tower;
         Player player;
         //Enemy enemy1;

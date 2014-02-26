@@ -15,6 +15,7 @@ namespace BaseDefender
         protected Vector2 center;
         protected Vector2 origin;
         protected float rotation;
+        protected Rectangle bound; // for checking whether a tower is  being clicked or not
 
         public Vector2 Position
         {
@@ -26,6 +27,11 @@ namespace BaseDefender
             get { return center; }
         }
 
+        public Rectangle Bounds
+        {
+            get { return bound; }
+        }
+
         public Sprite(Texture2D tex, Vector2 pos)
         {
             texture = tex;
@@ -33,6 +39,7 @@ namespace BaseDefender
             velocity = Vector2.Zero;
             center = new Vector2(position.X + texture.Width / 2, position.Y + texture.Height / 2);
             origin = new Vector2(texture.Width / 2, texture.Height / 2);
+            bound = new Rectangle((int)position.X,(int)position.Y,texture.Width,texture.Height);
         }
 
         public virtual void Update(GameTime gameTime)

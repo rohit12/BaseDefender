@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace BaseDefender
 {
-    public class Level1
+    public class Level
     {
         int[,] map = new int[,] 
         {
@@ -38,7 +38,7 @@ namespace BaseDefender
             get { return map.GetLength(0); }
         }
 
-        public Level1()
+        public Level()
         {
             waypoints.Enqueue(new Vector2(2, 0) * 32);
             waypoints.Enqueue(new Vector2(2, 2) * 32);

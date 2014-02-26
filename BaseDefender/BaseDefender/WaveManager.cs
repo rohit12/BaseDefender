@@ -14,7 +14,7 @@ namespace BaseDefender
         private Queue<Wave> waves = new Queue<Wave>();
         private Texture2D[] enemyTexture;
         private bool waveFinished = false;
-        private Level1 level;
+        private Level level;
 
         public Wave CurrentWave
         {
@@ -31,7 +31,7 @@ namespace BaseDefender
             get { return CurrentWave.RoundNumber + 1; }
         }
 
-        public WaveManager(Player player, Level1 level, int numberOfWaves, Texture2D[] enemyTexture)
+        public WaveManager(Player player, Level level, int numberOfWaves, Texture2D[] enemyTexture)
         {
             this.numberOfWaves = numberOfWaves;
             this.enemyTexture = enemyTexture;

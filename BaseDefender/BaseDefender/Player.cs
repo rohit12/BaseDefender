@@ -27,8 +27,9 @@ namespace BaseDefender
         private int tileX;
         private int tileY;
         private Texture2D bulletTexture;
-        private Level1 level;
+        private Level level;
         private ContentManager content;
+        protected Tower selectedTower;
 
         public int Money
         {
@@ -48,7 +49,7 @@ namespace BaseDefender
             }
         }
 
-        public Player(Level1 level, Texture2D towerTexture, Texture2D bulletTexture, ContentManager content)
+        public Player(Level level, Texture2D towerTexture, Texture2D bulletTexture, ContentManager content)
         {
             this.level = level;
             this.towerTexture = towerTexture;
@@ -76,6 +77,30 @@ namespace BaseDefender
                 if (string.IsNullOrEmpty(newTowerType) == false)
                 {
                     AddTower();
+                }
+                else
+                {
+                    if (selectedTower != null)
+                    {
+                        if (!selectedTower.Bounds.Contains(mouseState.X, mouseState.Y))
+                        {
+                            selectedTower.Selected = false;
+                        }
+                    }
+
+                    foreach (Tower tower in towers)
+                    {
+                        if (tower==selectedTower)
+                        {
+                            continue;
+                        }
+
+                        if (tower.Bounds.Contains(mouseState.X, mouseState.Y))
+                        {
+                            selectedTower = tower;
+                            tower.Selected = true;
+                        }
+                    }
                 }
             }
 

@@ -16,6 +16,13 @@ namespace BaseDefender
         protected Texture2D bulletTexture;
         protected float bulletTimer;
         protected List<Bullet> bulletList = new List<Bullet>();
+        protected bool selected;
+
+        public bool Selected
+        {
+            get { return selected; }
+            set { selected = value; }
+        }
 
         public Enemy Target
         {

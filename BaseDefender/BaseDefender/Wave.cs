@@ -15,7 +15,7 @@ namespace BaseDefender
         private int enemiesSpawned;
         private bool enemyAtEnd;
         private bool spawningEnemies;
-        private Level1 level;
+        private Level level;
         private Texture2D enemyTexture;
         public List<Enemy> enemies = new List<Enemy>();
         private Player player;
@@ -41,7 +41,7 @@ namespace BaseDefender
             get { return enemies; }
         }
 
-        public Wave(int waveNumber, int numOfEnemies, Player player, Level1 level, Texture2D enemyTexture)
+        public Wave(int waveNumber, int numOfEnemies, Player player, Level level, Texture2D enemyTexture)
         {
             this.waveNumber = waveNumber;
             this.numOfEnemies = numOfEnemies;
