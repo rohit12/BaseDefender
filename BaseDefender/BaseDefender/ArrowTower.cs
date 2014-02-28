@@ -23,6 +23,12 @@ namespace BaseDefender
             this.content = content;
         }
 
+        public void Upgrade(int previousLevel)
+        {
+            this.damage = this.damage * (previousLevel + 1);
+            this.radius = this.radius + ((previousLevel + 1) * 5);
+        }
+
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);

@@ -31,6 +31,8 @@ namespace BaseDefender
         WaveManager waveManager;
         Toolbar toolbar;
         Button arrowButton;
+        public static Button upgradeButton;
+        public static bool buttonVisible;
         SpriteFont arial;
         SpriteFont lucida;
         Menu menu;
@@ -38,6 +40,12 @@ namespace BaseDefender
         public static GameStates gameStates;
         Texture2D[] enemyTexture = new Texture2D[2];
         public SoundEffect bulletSound;
+
+        public bool ButtonVisible
+        {
+            get { return buttonVisible; }
+            set { buttonVisible = value; }
+        }
 
         public Game1()
         {

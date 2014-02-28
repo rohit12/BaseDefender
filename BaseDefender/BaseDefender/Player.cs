@@ -27,9 +27,12 @@ namespace BaseDefender
         private int tileX;
         private int tileY;
         private Texture2D bulletTexture;
+        private Texture2D upgradeTexture;
         private Level level;
         private ContentManager content;
         protected Tower selectedTower;
+        protected Button upgradeButton;
+        protected bool buttonVisible;
 
         public int Money
         {
@@ -55,6 +58,7 @@ namespace BaseDefender
             this.towerTexture = towerTexture;
             this.bulletTexture = bulletTexture;
             this.content = content;
+            upgradeTexture = content.Load<Texture2D>("upgrade");
         }
 
         public string NewTowerType
@@ -99,6 +103,8 @@ namespace BaseDefender
                         {
                             selectedTower = tower;
                             tower.Selected = true;
+                            buttonVisible = true;
+                            upgradeButton = new Button(upgradeTexture, new Vector2(32,level.Height*32 -32));
                         }
                     }
                 }
@@ -142,6 +148,10 @@ namespace BaseDefender
             foreach (Tower tower in towers)
             {
                 tower.Draw(spriteBatch);
+            }
+            if (buttonVisible)
+            {
+                upgradeButton.Draw(spriteBatch);
             }
         }
 
