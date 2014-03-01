@@ -17,13 +17,17 @@ namespace BaseDefender
             
         }
 
-        public void DrawEndScreen(SpriteBatch batch, int screenWidth, SpriteFont lucida)
+       
+public void DrawEndScreen(SpriteBatch batch, int screenWidth, SpriteFont lucida,Texture2D texture)
         {
-            string str = "GAME OVER!";
-            batch.DrawString(lucida, str, new Vector2(screenWidth / 2 - lucida.MeasureString(str).X / 2, 20), Color.Black);
-            //batch.DrawString(lucida, infoText, new Vector2(screenWidth / 2 - lucida.MeasureString(infoText).X / 2, 100), Color.Maroon);
-            string prompt = "Press Enter to Continue";
-            batch.DrawString(lucida, prompt, new Vector2(screenWidth / 2 - lucida.MeasureString(prompt).X / 2, 200), Color.White);
+            batch.Draw(texture, new Vector2(0f, 0f), Color.White);
+            //string str="GAME OVER!";
+            //batch.DrawString(lucida, str, new Vector2(screenWidth / 2 - lucida.MeasureString(str).X / 2, 20), Color.Black);
+            
+            //batch.DrawString(lucida, infoText, new Vector2(screenWidth / 2 - lucida.MeasureString(infoText).X / 2, 100), Color.White);
+            
+            //string prompt = "Press Enter to Continue";
+            //batch.DrawString(lucida, prompt, new Vector2(screenWidth / 2 - lucida.MeasureString(prompt).X / 2, 200), Color.White);
         }
 
 
