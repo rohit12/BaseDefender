@@ -22,26 +22,27 @@ namespace BaseDefender
         }
 
         GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
-        Level level = new Level();
-        //Tower tower;
-        Player player;
-        //Enemy enemy1;
-        //Wave wave;
+        
+        Level level = new Level();        
+        Player player;        
         WaveManager waveManager;
-        Toolbar toolbar;
         Button arrowButton;
+        Button1 button1;
         public static Button upgradeButton;
-        public static bool buttonVisible;
-        SpriteFont arial;
-        SpriteFont lucida;
+        public static GameStates gameStates;
+        public SoundEffect bulletSound;
         Menu menu;
         Input input;
-        public static GameStates gameStates;
-        Texture2D[] enemyTexture = new Texture2D[2];
-        public SoundEffect bulletSound;
-        Button1 button1;
-        
+        Toolbar toolbar;
+        SpriteBatch spriteBatch;
+        SpriteFont arial;
+        SpriteFont lucida;
+        Texture2D[] enemyTexture = new Texture2D[2];        
+        float[] enemyHealth = new float[2];
+        public static bool buttonVisible;
+        //Tower tower;
+        //Enemy enemy1;
+        //Wave wave;
 	    public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -73,6 +74,9 @@ namespace BaseDefender
             enemyTexture[0] = Content.Load<Texture2D>("enemy"); 
             enemyTexture[1]=Content.Load<Texture2D>("enemy2");
 
+            // enemyHealth [0]= ;
+            //enemyHealth [1]= ;
+
             arial = Content.Load<SpriteFont>("Arial");
             lucida = Content.Load<SpriteFont>("Lucida");
 
@@ -80,8 +84,9 @@ namespace BaseDefender
             Texture2D bulletTexture = Content.Load<Texture2D>("bullet");
             bulletSound = Content.Load<SoundEffect>("gunShot");
             player = new Player(level, towerTexture, bulletTexture,Content);
-
-            waveManager = new WaveManager(player, level, 30, enemyTexture);
+                        
+            // waveManager = new WaveManager(player, level, 30, enemyTexture);
+            waveManager = new WaveManager(player, level, 30, enemyTexture, enemyHealth);
 
             SpriteFont font = Content.Load<SpriteFont>("Arial");
 
