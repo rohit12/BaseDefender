@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Input; 
 using Microsoft.Xna.Framework.Content;
 
 namespace BaseDefender
@@ -21,6 +21,12 @@ namespace BaseDefender
 
             this.radius = 80; // Set the radius
             this.content = content;
+        }
+
+        public void Upgrade(int previousLevel)
+        {
+            this.damage = this.damage * (previousLevel + 1);
+            this.radius = this.radius + ((previousLevel + 1) * 10);
         }
 
         public override void Update(GameTime gameTime)
@@ -44,8 +50,9 @@ namespace BaseDefender
                 bullet.Update(gameTime);
 
                 if (!IsInRange(bullet.Center))
+                {
                     bullet.Kill();
-
+                }
                 if (target != null && Vector2.Distance(bullet.Center, target.Center) < 12)
                 {
                     target.CurrentHealth -= bullet.Damage;

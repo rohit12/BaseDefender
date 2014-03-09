@@ -27,10 +27,14 @@ namespace BaseDefender
         private int tileX;
         private int tileY;
         private Texture2D bulletTexture;
+        private Texture2D upgradeTexture;
         private Level level;
         private ContentManager content;
         protected Tower selectedTower;
 
+        protected UpgradeButton upgradeButton;
+        protected bool buttonVisible;
+        
         public int Money
         {
             get { return money; }
@@ -55,6 +59,8 @@ namespace BaseDefender
             this.towerTexture = towerTexture;
             this.bulletTexture = bulletTexture;
             this.content = content;
+            upgradeTexture = content.Load<Texture2D>("upgrade");
+            upgradeButton = new UpgradeButton();
         }
 
         public string NewTowerType
@@ -99,11 +105,14 @@ namespace BaseDefender
                         {
                             selectedTower = tower;
                             tower.Selected = true;
+                            buttonVisible = true;
+                            //upgradeButton = new UpgradeButton(upgradeTexture, new Vector2(64, level.Height * 32-32));
+                            upgradeButton = new UpgradeButton(upgradeTexture, new Vector2(tileX+5,tileY-24));
                         }
                     }
                 }
             }
-
+            
             foreach (Tower tower in towers)
             {
                 if (tower.Target == null)
@@ -113,8 +122,16 @@ namespace BaseDefender
 
                 tower.Update(gameTime);
             }
-
             oldState = mouseState;
+            upgradeButton.Update();
+            if (upgradeButton.Clicked)
+            {
+                upgradeButton.Clicked = false;
+                int previouslevel = selectedTower.UpgradeLevel;
+                selectedTower.UpgradeLevel += 1;
+                ArrowTower at = (ArrowTower)selectedTower;
+                at.Upgrade(previouslevel);
+            }
         }
 
         private bool IsCellClear()
@@ -143,6 +160,11 @@ namespace BaseDefender
             {
                 tower.Draw(spriteBatch);
             }
+            if (buttonVisible)
+            {
+                upgradeButton.Draw(spriteBatch);
+               
+            }
         }
 
         public void AddTower()
@@ -153,8 +175,7 @@ namespace BaseDefender
             {
                 case "Arrow Tower":
                     {
-                        towerToAdd = new ArrowTower(towerTexture,
-                            bulletTexture, new Vector2(tileX, tileY),content);
+                        towerToAdd = new ArrowTower(towerTexture,bulletTexture, new Vector2(tileX, tileY),content);
                         break;
                     }
             }

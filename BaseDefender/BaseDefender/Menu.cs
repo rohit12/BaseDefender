@@ -18,9 +18,9 @@ namespace BaseDefender
         }
 
        
-public void DrawEndScreen(SpriteBatch batch, int screenWidth, SpriteFont lucida,Texture2D texture)
+        public void DrawEndScreen(SpriteBatch batch, int screenWidth, SpriteFont lucida,Texture2D texture)
         {
-            batch.Draw(texture, new Vector2(0f, 0f), Color.White);
+            batch.Draw(texture, new Vector2(0f, 0f), null, Color.White, 0, new Vector2(0f, 0f), 9 / 8f, SpriteEffects.None, 0);
             //string str="GAME OVER!";
             //batch.DrawString(lucida, str, new Vector2(screenWidth / 2 - lucida.MeasureString(str).X / 2, 20), Color.Black);
             

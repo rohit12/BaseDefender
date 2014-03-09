@@ -17,6 +17,13 @@ namespace BaseDefender
         protected float bulletTimer;
         protected List<Bullet> bulletList = new List<Bullet>();
         protected bool selected;
+        protected int upgradeLevel=1;
+
+        public int UpgradeLevel
+        {
+            get { return upgradeLevel; }
+            set { upgradeLevel = value; }
+        }
 
         public bool Selected
         {
@@ -73,7 +80,9 @@ namespace BaseDefender
 
         public bool IsInRange(Vector2 position)
         {
+           
             return Vector2.Distance(center, position) <= radius;
+            
         }
 
         public override void Update(GameTime gameTime)
