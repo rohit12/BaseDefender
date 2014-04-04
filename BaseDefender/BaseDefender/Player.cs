@@ -80,6 +80,7 @@ namespace BaseDefender
 
             if (mouseState.LeftButton == ButtonState.Released && oldState.LeftButton == ButtonState.Pressed)
             {
+                
                 if (string.IsNullOrEmpty(newTowerType) == false)
                 {
                     AddTower();
@@ -91,23 +92,29 @@ namespace BaseDefender
                         if (!selectedTower.Bounds.Contains(mouseState.X, mouseState.Y))
                         {
                             selectedTower.Selected = false;
+                            if (buttonVisible)
+                                buttonVisible = false;
                         }
                     }
 
                     foreach (Tower tower in towers)
                     {
-                        if (tower==selectedTower)
-                        {
-                            continue;
-                        }
+                        //if (tower==selectedTower)
+                        //{
+                          //  continue;
+                        //}
 
                         if (tower.Bounds.Contains(mouseState.X, mouseState.Y))
                         {
                             selectedTower = tower;
                             tower.Selected = true;
-                            buttonVisible = true;
-                            //upgradeButton = new UpgradeButton(upgradeTexture, new Vector2(64, level.Height * 32-32));
-                            upgradeButton = new UpgradeButton(upgradeTexture, new Vector2(tileX+5,tileY-24));
+                            if (money >= 10 && tower.UpgradeLevel <= 2)
+                            {
+                                buttonVisible = true;
+                                //upgradeButton = new UpgradeButton(upgradeTexture, new Vector2(64, level.Height * 32-32));
+                                upgradeButton = new UpgradeButton(upgradeTexture, new Vector2(tileX + 5, tileY - 24));
+
+                            }
                         }
                     }
                 }
@@ -123,14 +130,17 @@ namespace BaseDefender
                 tower.Update(gameTime);
             }
             oldState = mouseState;
+
             upgradeButton.Update();
+           
             if (upgradeButton.Clicked)
             {
                 upgradeButton.Clicked = false;
-                int previouslevel = selectedTower.UpgradeLevel;
-                selectedTower.UpgradeLevel += 1;
+                buttonVisible = false;
                 ArrowTower at = (ArrowTower)selectedTower;
-                at.Upgrade(previouslevel);
+                at.Upgrade(selectedTower.UpgradeLevel);
+                selectedTower.UpgradeLevel += 1;
+                money -= 10;
             }
         }
 
@@ -163,7 +173,6 @@ namespace BaseDefender
             if (buttonVisible)
             {
                 upgradeButton.Draw(spriteBatch);
-               
             }
         }
 

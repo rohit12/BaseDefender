@@ -11,7 +11,6 @@ namespace BaseDefender
     public class UpgradeButton
     {
         private bool clicked = false;
-        private bool upgraded = false;
         private MouseState previousState;
         private Rectangle bounds;
         private Texture2D upgradeTexture;
@@ -35,10 +34,7 @@ namespace BaseDefender
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (!upgraded)
-                spriteBatch.Draw(upgradeTexture, bounds, Color.White);
-            
-            //Update();       
+            spriteBatch.Draw(upgradeTexture, bounds, Color.White); 
         }
 
         public void Update()
@@ -52,9 +48,8 @@ namespace BaseDefender
             if (mouseState.LeftButton == ButtonState.Pressed && previousState.LeftButton == ButtonState.Released)
             {
                 if (isMouseOver == true)
-                {
+                { 
                     clicked = true;
-                    upgraded = true;
                 }
             }
             previousState = mouseState;

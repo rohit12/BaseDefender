@@ -80,6 +80,7 @@ namespace BaseDefender
                     batch.Draw(texture, new Rectangle(x * 32, y * 32, 32, 32), Color.White);
                 }
             }
+            
         }
     }
 }

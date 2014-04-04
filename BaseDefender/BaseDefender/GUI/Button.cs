@@ -22,8 +22,15 @@ namespace BaseDefender
         private Texture2D pressedTexture;
         public event EventHandler Clicked;
         private Rectangle bounds;
+        private Texture2D buttonTexture;
 
         private ButtonStatus state = ButtonStatus.Normal;
+
+        public Button(Texture2D texture, Vector2 position):base(texture,position)
+        {
+            this.buttonTexture = texture;
+            this.bounds = new Rectangle((int)position.X, (int)position.Y, texture.Width, texture.Height);
+        }
 
         public Button(Texture2D texture, Texture2D hoverTexture, Texture2D pressedTexture, Vector2 position)
             : base(texture, position)
