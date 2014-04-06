@@ -104,7 +104,7 @@ namespace BaseDefender
                             selectedTower = tower;
                             tower.Selected = true;
                             buttonVisible = true;
-                            upgradeButton = new Button(upgradeTexture, new Vector2(32,level.Height*32 -32));
+                            upgradeButton = new Button(upgradeTexture, new Vector2(64,level.Height*32));
                         }
                     }
                 }
