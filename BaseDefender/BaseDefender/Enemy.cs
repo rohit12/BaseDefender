@@ -87,7 +87,7 @@ namespace BaseDefender
             if (alive)
             {
                 float healthPercentage = (float)currentHealth / (float)startHealth;
-
+                //Console.WriteLine(healthPercentage);
                 Color color = new Color(new Vector3(1 - healthPercentage,
                     1 - healthPercentage, 1 - healthPercentage));
 

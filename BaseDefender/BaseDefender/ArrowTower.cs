@@ -26,7 +26,7 @@ namespace BaseDefender
         public void Upgrade(int previousLevel)
         {
             this.damage = this.damage * (previousLevel + 1);
-            this.radius = this.radius + ((previousLevel + 1) * 5);
+            this.radius = this.radius + ((previousLevel + 1) * 10);
         }
 
         public override void Update(GameTime gameTime)
@@ -50,8 +50,9 @@ namespace BaseDefender
                 bullet.Update(gameTime);
 
                 if (!IsInRange(bullet.Center))
+                {
                     bullet.Kill();
-
+                }
                 if (target != null && Vector2.Distance(bullet.Center, target.Center) < 12)
                 {
                     target.CurrentHealth -= bullet.Damage;

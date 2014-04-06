@@ -8,54 +8,51 @@ using Microsoft.Xna.Framework.Input;
 
 namespace BaseDefender
 {
-    class Button1
+    public class UpgradeButton
     {
-        private Texture2D pausetexture;
-        private Texture2D playtexture;
+        private bool clicked = false;
         private MouseState previousState;
         private Rectangle bounds;
-        private bool paused = false;
+        private Texture2D upgradeTexture;
 
-        public Button1(Texture2D pausetexture, Texture2D playtexture, Vector2 position)
+        public UpgradeButton()
         {
-            this.pausetexture = pausetexture;
-            this.playtexture = playtexture;
-            this.bounds = new Rectangle((int)position.X, (int)position.Y, pausetexture.Width, pausetexture.Height);
+
         }
 
-        public bool checkPause()
+        public UpgradeButton(Texture2D texture, Vector2 position)
         {
-            return paused;
+            upgradeTexture = texture;
+            bounds = new Rectangle((int)position.X, (int)position.Y, texture.Width, texture.Height);
+        }
+
+        public bool Clicked
+        {
+            get { return clicked; }
+            set { clicked = value; }
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (paused)
-                spriteBatch.Draw(playtexture, bounds, Color.White);
-            else
-                spriteBatch.Draw(pausetexture, bounds, Color.White);
+            spriteBatch.Draw(upgradeTexture, bounds, Color.White); 
         }
 
-        public void Update(GameTime gametime)
+        public void Update()
         {
             MouseState mouseState = Mouse.GetState();
-
+            
             int mouseX = mouseState.X;
             int mouseY = mouseState.Y;
             bool isMouseOver = bounds.Contains(mouseX, mouseY);
-
+          
             if (mouseState.LeftButton == ButtonState.Pressed && previousState.LeftButton == ButtonState.Released)
             {
                 if (isMouseOver == true)
-                {
-                    if (paused)
-                        paused = false;
-                    else
-                        paused = true;
+                { 
+                    clicked = true;
                 }
             }
             previousState = mouseState;
         }
-
     }
 }

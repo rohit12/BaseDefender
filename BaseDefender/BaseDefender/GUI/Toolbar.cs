@@ -21,6 +21,8 @@ namespace BaseDefender
             this.position = position;
             textPosition = new Vector2(110, position.Y + 10);
         }
+        
+        
 
         public void Draw(SpriteBatch spriteBatch, Player player)
         {

@@ -13,7 +13,7 @@ namespace BaseDefender
         private KeyboardState keyboardState;
         private KeyboardState lastState;
 
-        public Input()
+        /*public Input()
         {
             keyboardState = Keyboard.GetState();
             lastState = keyboardState;
@@ -25,7 +25,7 @@ namespace BaseDefender
             keyboardState = Keyboard.GetState();
 
         }
-
+        */
         public bool Enter
         {
             get
@@ -41,6 +41,7 @@ namespace BaseDefender
                     return false;
                 }
             }
+           
         }
 
         public bool Escape
