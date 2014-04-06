@@ -22,27 +22,26 @@ namespace BaseDefender
         }
 
         GraphicsDeviceManager graphics;
-        
-        Level level = new Level();        
-        Player player;        
-        WaveManager waveManager;
-        Button arrowButton;
-        Button1 button1;
-        public static Button upgradeButton;
-        public static GameStates gameStates;
-        public SoundEffect bulletSound;
-        Menu menu;
-        Input input;
-        Toolbar toolbar;
         SpriteBatch spriteBatch;
-        SpriteFont arial;
-        SpriteFont lucida;
-        Texture2D[] enemyTexture = new Texture2D[2];        
-        float[] enemyHealth = new float[2];
-        public static bool buttonVisible;
+        Level level = new Level();
         //Tower tower;
+        Player player;
         //Enemy enemy1;
         //Wave wave;
+        WaveManager waveManager;
+        Toolbar toolbar;
+        Button arrowButton;
+        public static UpgradeButton upgradeButton;
+        public static bool buttonVisible;
+        SpriteFont arial;
+        SpriteFont lucida;
+        Menu menu;
+        Input input;
+        public static GameStates gameStates;
+        Texture2D[] enemyTexture = new Texture2D[2];
+        public SoundEffect bulletSound;
+        Button1 button1;
+        
 	    public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -74,9 +73,6 @@ namespace BaseDefender
             enemyTexture[0] = Content.Load<Texture2D>("enemy"); 
             enemyTexture[1]=Content.Load<Texture2D>("enemy2");
 
-            // enemyHealth [0]= ;
-            //enemyHealth [1]= ;
-
             arial = Content.Load<SpriteFont>("Arial");
             lucida = Content.Load<SpriteFont>("Lucida");
 
@@ -84,15 +80,13 @@ namespace BaseDefender
             Texture2D bulletTexture = Content.Load<Texture2D>("bullet");
             bulletSound = Content.Load<SoundEffect>("gunShot");
             player = new Player(level, towerTexture, bulletTexture,Content);
-                        
-            // waveManager = new WaveManager(player, level, 30, enemyTexture);
-            waveManager = new WaveManager(player, level, 30, enemyTexture, enemyHealth);
+
+            waveManager = new WaveManager(player, level, 30, enemyTexture);
 
             SpriteFont font = Content.Load<SpriteFont>("Arial");
 
             Texture2D topBar = Content.Load<Texture2D>("toolbar");
             toolbar = new Toolbar(topBar, font, new Vector2(0, level.Height * 32));
-
             //Texture2D arrowNormal = Content.Load<Texture2D>("GUI\\Arrow Tower\\arrow normal");
             //Texture2D arrowHover = Content.Load<Texture2D>("GUI\\Arrow Tower\\arrow hover");
             //Texture2D arrowPressed = Content.Load<Texture2D>("GUI\\Arrow Tower\\arrow pressed");
@@ -106,6 +100,7 @@ namespace BaseDefender
 	        Texture2D pausetexture = Content.Load<Texture2D>("pause");
             Texture2D playtexture = Content.Load<Texture2D>("play");
 	        button1=new Button1(pausetexture, playtexture, new Vector2(35, level.Height * 32 + 3));
+
         }
 
         private void arrowButton_Clicked(object sender, EventArgs e)
@@ -190,6 +185,7 @@ namespace BaseDefender
                 //tower.Draw(spriteBatch);
                 arrowButton.Draw(spriteBatch);
 		        button1.Draw(spriteBatch);
+              
             }
 
             else if (gameStates == GameStates.End)

@@ -127,6 +127,7 @@
   <ItemGroup>
     <Compile Include="ArrowTower.cs" />
     <Compile Include="Bullet.cs" />
+    <Compile Include="UpgradeButton.cs" />
     <Compile Include="Enemy.cs" />
     <Compile Include="GUI\Button.cs" />
     <Compile Include="GUI\Button1.cs" />

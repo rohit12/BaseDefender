@@ -51,7 +51,6 @@ namespace BaseDefender
         {
             this.rotation = rotation;
             this.damage = damage;
-
             this.speed = speed;
             this.content = content;
             bulletSound = content.Load<SoundEffect>("gunShot");

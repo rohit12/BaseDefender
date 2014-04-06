@@ -80,7 +80,9 @@ namespace BaseDefender
 
         public bool IsInRange(Vector2 position)
         {
+           
             return Vector2.Distance(center, position) <= radius;
+            
         }
 
         public override void Update(GameTime gameTime)

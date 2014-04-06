@@ -16,9 +16,7 @@ namespace BaseDefender
         private bool enemyAtEnd;
         private bool spawningEnemies;
         private Level level;
-        //private Texture2D enemyTexture;
-        private Texture2D[] enemyTexture;
-        private float[] enemyHealthList;
+        private Texture2D enemyTexture;
         public List<Enemy> enemies = new List<Enemy>();
         private Player player;
 
@@ -43,30 +41,18 @@ namespace BaseDefender
             get { return enemies; }
         }
 
-        //public Wave(int waveNumber, int numOfEnemies, Player player, Level level, Texture2D enemyTexture)
-        public Wave(int waveNumber, int numOfEnemies, Player player, Level level, Texture2D[] enemyTextureList, float[] enemyHealthList)
+        public Wave(int waveNumber, int numOfEnemies, Player player, Level level, Texture2D enemyTexture)
         {
             this.waveNumber = waveNumber;
             this.numOfEnemies = numOfEnemies;
             this.player = player;
             this.level = level;
-            //this.enemyTexture = enemyTexture;
-            this.enemyTexture = enemyTextureList;
-            this.enemyHealthList = enemyHealthList;
-        }
-
-        private int SelectEnemy(int enemyTypeCount)
-        {
-            Random rand = new Random();
-            int randomIndex = rand.Next() % enemyTypeCount;
-            return randomIndex;
+            this.enemyTexture = enemyTexture;
         }
 
         private void AddEnemy()
         {
-           // Enemy enemy = new Enemy(enemyTexture, level.Waypoints.Peek(), 50 + waveNumber * 20, (waveNumber + 1) * 2, (waveNumber + 1) * 0.5f);
-            int randomEnemyIndex = SelectEnemy(enemyTexture.Count());
-            Enemy enemy = new Enemy(enemyTexture[randomEnemyIndex], level.Waypoints.Peek(),/*enemyHealthList [randomEnemyIndex ]*/ 50 + waveNumber * 20, (waveNumber + 1) * 2, (waveNumber + 1) * 0.5f);
+            Enemy enemy = new Enemy(enemyTexture, level.Waypoints.Peek(), 50 + waveNumber * 20, (waveNumber + 1) * 2, (waveNumber + 1) * 0.5f);
             enemy.SetWaypoints(level.Waypoints);
             enemies.Add(enemy);
             spawnTimer = 0;
