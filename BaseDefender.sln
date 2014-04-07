@@ -5,10 +5,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseDefender", "BaseDefende
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseDefenderContent", "BaseDefender\BaseDefenderContent\BaseDefenderContent.contentproj", "{BF8FE60D-B352-4B99-89F8-0AB1355ECF8E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RenderTarget1", "..\..\Users\amol\Downloads\RenderTarget1_4_0\RenderTarget1\RenderTarget1\RenderTarget1.csproj", "{17895BF7-17BB-4F4E-956B-0B3DCD6F3B1B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RenderTarget1Content", "..\..\Users\amol\Downloads\RenderTarget1_4_0\RenderTarget1\RenderTarget1Content\RenderTarget1Content.contentproj", "{D8767765-F824-441B-9B58-DDDE0FB78120}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,16 +23,6 @@ Global
 		{BF8FE60D-B352-4B99-89F8-0AB1355ECF8E}.Debug|x86.ActiveCfg = Debug|x86
 		{BF8FE60D-B352-4B99-89F8-0AB1355ECF8E}.Release|Any CPU.ActiveCfg = Release|x86
 		{BF8FE60D-B352-4B99-89F8-0AB1355ECF8E}.Release|x86.ActiveCfg = Release|x86
-		{17895BF7-17BB-4F4E-956B-0B3DCD6F3B1B}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{17895BF7-17BB-4F4E-956B-0B3DCD6F3B1B}.Debug|x86.ActiveCfg = Debug|x86
-		{17895BF7-17BB-4F4E-956B-0B3DCD6F3B1B}.Debug|x86.Build.0 = Debug|x86
-		{17895BF7-17BB-4F4E-956B-0B3DCD6F3B1B}.Release|Any CPU.ActiveCfg = Release|x86
-		{17895BF7-17BB-4F4E-956B-0B3DCD6F3B1B}.Release|x86.ActiveCfg = Release|x86
-		{17895BF7-17BB-4F4E-956B-0B3DCD6F3B1B}.Release|x86.Build.0 = Release|x86
-		{D8767765-F824-441B-9B58-DDDE0FB78120}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D8767765-F824-441B-9B58-DDDE0FB78120}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{D8767765-F824-441B-9B58-DDDE0FB78120}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{D8767765-F824-441B-9B58-DDDE0FB78120}.Release|x86.ActiveCfg = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
