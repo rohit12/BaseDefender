@@ -87,12 +87,9 @@ namespace BaseDefender
 
             Texture2D topBar = Content.Load<Texture2D>("toolbar");
             toolbar = new Toolbar(topBar, font, new Vector2(0, level.Height * 32));
-            //Texture2D arrowNormal = Content.Load<Texture2D>("GUI\\Arrow Tower\\arrow normal");
-            //Texture2D arrowHover = Content.Load<Texture2D>("GUI\\Arrow Tower\\arrow hover");
-            //Texture2D arrowPressed = Content.Load<Texture2D>("GUI\\Arrow Tower\\arrow pressed");
-            Texture2D arrowNormal = Content.Load<Texture2D>("GUI\\arrow normal");
-            Texture2D arrowHover = Content.Load<Texture2D>("GUI\\arrow hover");
-            Texture2D arrowPressed = Content.Load<Texture2D>("GUI\\arrow pressed");
+            Texture2D arrowNormal = Content.Load<Texture2D>("GUI\\Arrow Tower\\arrow normal");
+            Texture2D arrowHover = Content.Load<Texture2D>("GUI\\Arrow Tower\\arrow hover");
+            Texture2D arrowPressed = Content.Load<Texture2D>("GUI\\Arrow Tower\\arrow pressed");
 
             arrowButton = new Button(arrowNormal, arrowHover, arrowPressed, new Vector2(0, level.Height * 32));
             arrowButton.Clicked += new EventHandler(arrowButton_Clicked);

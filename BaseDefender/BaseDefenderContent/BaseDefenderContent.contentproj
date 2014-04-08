@@ -84,11 +84,6 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="grass.png">
-      <Name>grass</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
     <Compile Include="gunShot.wav">
       <Name>gunShot</Name>
       <Importer>WavImporter</Importer>
@@ -131,18 +126,25 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GUI\arrow hover.png">
+    <Compile Include="GUI\Arrow Tower\arrow hover.png">
       <Name>arrow hover</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="GUI\arrow normal.png">
+    <Compile Include="GUI\Arrow Tower\arrow normal.png">
       <Name>arrow normal</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="GUI\arrow pressed.png">
+    <Compile Include="GUI\Arrow Tower\arrow pressed.png">
       <Name>arrow pressed</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="grass.png">
+      <Name>grass</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

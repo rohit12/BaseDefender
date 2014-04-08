@@ -71,7 +71,7 @@ namespace BaseDefender
             if (spawningEnemies)
             {
                 spawnTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
-                if (spawnTimer > 1)
+                if (spawnTimer > 0.5)
                     AddEnemy();
             }
 
