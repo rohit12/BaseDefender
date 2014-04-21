@@ -55,7 +55,7 @@ namespace BaseDefender
             this.bulletTexture = bulletTexture;
         }
 
-        public void GetClosestEnemy(List<Enemy> enemies)
+        public virtual void GetClosestEnemy(List<Enemy> enemies)
         {
             target = null;
             float smallestRange = radius;
@@ -103,6 +103,13 @@ namespace BaseDefender
             }
         }
 
+
+        public void Upgrade(int previousLevel)
+        {
+            this.damage = this.damage * (previousLevel + 1);
+            this.radius = this.radius + ((previousLevel + 1) * 10);
+        }
+
         public override void Draw(SpriteBatch spriteBatch)
         {
             foreach (Bullet bullet in bulletList)
@@ -110,5 +117,11 @@ namespace BaseDefender
 
             base.Draw(spriteBatch);
         }
+
+        public virtual bool HasTarget
+        {
+            get { return target != null; }
+        }
+
     }
 }

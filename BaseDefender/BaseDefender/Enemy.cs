@@ -88,8 +88,8 @@ namespace BaseDefender
             {
                 float healthPercentage = (float)currentHealth / (float)startHealth;
                 //Console.WriteLine(healthPercentage);
-                Color color = new Color(new Vector3(1 - healthPercentage,
-                    1 - healthPercentage, 1 - healthPercentage));
+                Color color = new Color(new Vector3(1 - (healthPercentage-0.21f),
+                    1 - (healthPercentage - 0.21f), 1 - (healthPercentage - 0.21f)));
 
                 base.Draw(spriteBatch, color);
             }

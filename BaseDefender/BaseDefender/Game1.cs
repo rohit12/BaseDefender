@@ -23,7 +23,7 @@ namespace BaseDefender
 
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        Level level = new Level();
+        Level level = new Level(50);
         //Tower tower;
         Player player;
         //Enemy enemy1;
@@ -41,14 +41,15 @@ namespace BaseDefender
         Texture2D[] enemyTexture = new Texture2D[2];
         public SoundEffect bulletSound;
         Button1 button1;
+        Button spikeButton;
         
 	    public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             menu = new Menu();
             input = new Input();
-            graphics.PreferredBackBufferWidth = level.Width * 32;
-            graphics.PreferredBackBufferHeight = (level.Height + 1) * 32;
+            graphics.PreferredBackBufferWidth = level.Width * 50;
+            graphics.PreferredBackBufferHeight = (level.Height + 1) * 50;
             IsMouseVisible = true;
             Content.RootDirectory = "Content";
             gameStates = GameStates.Menu;
@@ -76,33 +77,49 @@ namespace BaseDefender
             arial = Content.Load<SpriteFont>("Arial");
             lucida = Content.Load<SpriteFont>("Lucida");
 
-            Texture2D towerTexture = Content.Load<Texture2D>("tower");
+            Texture2D[] towerTextures = new Texture2D[]
+            {
+                Content.Load<Texture2D>("Arrow Tower"),
+                Content.Load<Texture2D>("Spike Tower")
+            };
             Texture2D bulletTexture = Content.Load<Texture2D>("bullet");
             bulletSound = Content.Load<SoundEffect>("gunShot");
-            player = new Player(level, towerTexture, bulletTexture,Content);
+            player = new Player(level, towerTextures, bulletTexture,Content);
 
             waveManager = new WaveManager(player, level, 30, enemyTexture);
 
             SpriteFont font = Content.Load<SpriteFont>("Arial");
 
             Texture2D topBar = Content.Load<Texture2D>("toolbar");
-            toolbar = new Toolbar(topBar, font, new Vector2(0, level.Height * 32));
+            toolbar = new Toolbar(topBar, font, new Vector2(0, level.Height * 50));
             Texture2D arrowNormal = Content.Load<Texture2D>("GUI\\Arrow Tower\\arrow normal");
             Texture2D arrowHover = Content.Load<Texture2D>("GUI\\Arrow Tower\\arrow hover");
             Texture2D arrowPressed = Content.Load<Texture2D>("GUI\\Arrow Tower\\arrow pressed");
 
-            arrowButton = new Button(arrowNormal, arrowHover, arrowPressed, new Vector2(0, level.Height * 32));
+            arrowButton = new Button(arrowNormal, arrowHover, arrowPressed, new Vector2(0, level.Height * 50));
             arrowButton.Clicked += new EventHandler(arrowButton_Clicked);
+
+            Texture2D spikeNormal = Content.Load<Texture2D>("GUI\\Spike Tower\\spike normal");
+            Texture2D spikeHover = Content.Load<Texture2D>("GUI\\Spike Tower\\spike hover");
+            Texture2D spikePressed = Content.Load<Texture2D>("GUI\\Spike Tower\\spike pressed");
+
+            spikeButton = new Button(spikeNormal, spikeHover,spikePressed, new Vector2(50, level.Height *50));
+            spikeButton.Clicked += new EventHandler(spikeButton_Clicked);
 
 	        Texture2D pausetexture = Content.Load<Texture2D>("pause");
             Texture2D playtexture = Content.Load<Texture2D>("play");
-	        button1=new Button1(pausetexture, playtexture, new Vector2(35, level.Height * 32 + 3));
+	        button1=new Button1(pausetexture, playtexture, new Vector2(120, level.Height * 50 + 3));
 
         }
 
         private void arrowButton_Clicked(object sender, EventArgs e)
         {
             player.NewTowerType = "Arrow Tower";
+        }
+
+        private void spikeButton_Clicked(object sender, EventArgs e)
+        {
+            player.NewTowerType = "Spike Tower";
         }
 
         protected override void UnloadContent()
@@ -149,13 +166,14 @@ namespace BaseDefender
 
         protected void GameUpdate(GameTime gameTime)
         {
-	        button1.Update(gameTime);
-            bool pause = button1.checkPause();
-            if (!pause)
+	        //button1.Update(gameTime);
+            //bool pause = button1.checkPause();
+            //if (!pause)
 	        {
             	waveManager.Update(gameTime);
             	player.Update(gameTime, waveManager.Enemies);
             	arrowButton.Update(gameTime);
+                spikeButton.Update(gameTime);
 	        }
         }
 
@@ -168,7 +186,7 @@ namespace BaseDefender
             {
                 Texture2D texture = Content.Load<Texture2D>("start_screen");
                 //spriteBatch.Draw(texture, new Vector2(0f, 0f), Color.White);
-                spriteBatch.Draw(texture, new Vector2(0f, 0f), null, Color.White, 0, new Vector2(0f, 0f), 9/8f, SpriteEffects.None, 0);
+                spriteBatch.Draw(texture, new Vector2(0f, 0f), null, Color.White, 0, new Vector2(0f, 0f), 1f, SpriteEffects.None, 0);
             }
 
             else if (gameStates == GameStates.Running)
@@ -181,6 +199,7 @@ namespace BaseDefender
                 toolbar.Draw(spriteBatch, player);
                 //tower.Draw(spriteBatch);
                 arrowButton.Draw(spriteBatch);
+                spikeButton.Draw(spriteBatch);
 		        button1.Draw(spriteBatch);
               
             }
@@ -188,7 +207,7 @@ namespace BaseDefender
             else if (gameStates == GameStates.End)
             {
 		        Texture2D endscreen = Content.Load<Texture2D>("end_screen");
-                menu.DrawEndScreen(spriteBatch, level.Width * 32, lucida,endscreen);
+                menu.DrawEndScreen(spriteBatch, level.Width * 50, lucida,endscreen);
             }
             spriteBatch.End();
 

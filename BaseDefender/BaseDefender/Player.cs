@@ -14,7 +14,7 @@ namespace BaseDefender
         private int money = 50;
         private int lives = 10;
 
-        private Texture2D towerTexture;
+        private Texture2D[] towerTextures;
 
         private List<Tower> towers = new List<Tower>();
 
@@ -53,10 +53,10 @@ namespace BaseDefender
             }
         }
 
-        public Player(Level level, Texture2D towerTexture, Texture2D bulletTexture, ContentManager content)
+        public Player(Level level, Texture2D[] towerTextures, Texture2D bulletTexture, ContentManager content)
         {
             this.level = level;
-            this.towerTexture = towerTexture;
+            this.towerTextures = towerTextures;
             this.bulletTexture = bulletTexture;
             this.content = content;
             upgradeTexture = content.Load<Texture2D>("upgrade");
@@ -72,11 +72,11 @@ namespace BaseDefender
         {
             mouseState = Mouse.GetState();
 
-            cellX = (int)(mouseState.X / 32);
-            cellY = (int)(mouseState.Y / 32);
+            cellX = (int)(mouseState.X / 50);
+            cellY = (int)(mouseState.Y /50);
 
-            tileX = cellX * 32;
-            tileY = cellY * 32;
+            tileX = cellX * 50;
+            tileY = cellY * 50;
 
             if (mouseState.LeftButton == ButtonState.Released && oldState.LeftButton == ButtonState.Pressed)
             {
@@ -109,7 +109,7 @@ namespace BaseDefender
                             selectedTower = tower;
                             tower.Selected = true;
                             buttonVisible = true;
-                            upgradeButton = new UpgradeButton(upgradeTexture, new Vector2(64,level.Height*32));
+                            upgradeButton = new UpgradeButton(upgradeTexture, new Vector2(64,level.Height*50));
                             if (money >= 10 && tower.UpgradeLevel <= 2)
                             {
                                 buttonVisible = true;
@@ -124,7 +124,7 @@ namespace BaseDefender
             
             foreach (Tower tower in towers)
             {
-                if (tower.Target == null)
+                if (tower.HasTarget == false)
                 {
                     tower.GetClosestEnemy(enemies);
                 }
@@ -139,8 +139,8 @@ namespace BaseDefender
             {
                 upgradeButton.Clicked = false;
                 buttonVisible = false;
-                ArrowTower at = (ArrowTower)selectedTower;
-                at.Upgrade(selectedTower.UpgradeLevel);
+                //ArrowTower at = (ArrowTower)selectedTower;
+                selectedTower.Upgrade(selectedTower.UpgradeLevel);
                 selectedTower.UpgradeLevel += 1;
                 money -= 10;
             }
@@ -186,8 +186,14 @@ namespace BaseDefender
             {
                 case "Arrow Tower":
                     {
-                        towerToAdd = new ArrowTower(towerTexture,bulletTexture, new Vector2(tileX, tileY),content);
+                        towerToAdd = new ArrowTower(towerTextures[0],bulletTexture, new Vector2(tileX, tileY),content);
                         break;
+                    }
+
+                case "Spike Tower":
+                    {
+                        towerToAdd = new SpikeTower(towerTextures[1], bulletTexture, new Vector2(tileX, tileY));
+                        break; 
                     }
             }
             if (IsCellClear() == true && towerToAdd.Cost <= money)

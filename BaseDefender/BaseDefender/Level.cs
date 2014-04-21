@@ -9,17 +9,20 @@ namespace BaseDefender
 {
     public class Level
     {
+        int tilesize;
         int[,] map = new int[,] 
         {
-            {0,0,1,0,0,0,0,0,0,},
-            {0,0,1,0,0,0,0,0,0,},
-            {0,0,1,1,1,1,1,1,1,},
-            {0,0,0,0,0,0,0,0,1,},
-            {1,1,1,1,1,1,1,1,1,},
-            {1,0,0,0,0,0,0,0,0,},
-            {1,1,1,1,1,1,1,1,1,},
-            {0,0,0,0,0,0,0,0,1,},
-            {1,1,1,1,1,1,1,1,1,},
+            {0,1,0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,1,1,1,1,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,1,0,0,0,0,0,0,1,1,1},
+            {0,0,0,0,1,0,0,0,0,0,1,1,0,0},
+            {0,0,1,1,1,0,0,0,0,0,1,1,0,0},
+            {0,0,1,0,0,0,0,0,0,0,1,0,0,0},
+            {0,0,1,1,1,0,0,0,0,0,1,0,0,0},
+            {0,0,1,1,1,1,1,0,0,0,1,0,0,0},
+            {0,0,1,1,1,1,1,0,0,0,1,0,0,0},
+            {0,0,0,0,1,1,1,1,1,1,1,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0,0,0},
         };
         private Queue<Vector2> waypoints = new Queue<Vector2>();
 
@@ -38,17 +41,28 @@ namespace BaseDefender
             get { return map.GetLength(0); }
         }
 
-        public Level()
+        /* public Vector2 ScaleFactor
+         {
+             get { return scalefactor; }
+         }*/
+        public Level(int tilesize)
         {
-            waypoints.Enqueue(new Vector2(2, 0) * 32);
-            waypoints.Enqueue(new Vector2(2, 2) * 32);
-            waypoints.Enqueue(new Vector2(8, 2) * 32);
-            waypoints.Enqueue(new Vector2(8, 4) * 32);
-            waypoints.Enqueue(new Vector2(0, 4) * 32);
-            waypoints.Enqueue(new Vector2(0, 6) * 32);
-            waypoints.Enqueue(new Vector2(8, 6) * 32);
-            waypoints.Enqueue(new Vector2(8, 8) * 32);
-            waypoints.Enqueue(new Vector2(0, 8) * 32);
+            this.tilesize = tilesize;
+            waypoints.Enqueue(new Vector2(1, 0) * tilesize);
+            waypoints.Enqueue(new Vector2(1, 1) * tilesize);
+            waypoints.Enqueue(new Vector2(4, 1) * tilesize);
+            waypoints.Enqueue(new Vector2(4, 4) * tilesize);
+            waypoints.Enqueue(new Vector2(2, 4) * tilesize);
+            waypoints.Enqueue(new Vector2(2, 6) * tilesize);
+            waypoints.Enqueue(new Vector2(3, 6) * tilesize);
+            waypoints.Enqueue(new Vector2(4, 7) * tilesize);
+            waypoints.Enqueue(new Vector2(6, 7) * tilesize);
+            waypoints.Enqueue(new Vector2(6, 9) * tilesize);
+            waypoints.Enqueue(new Vector2(10, 9) * tilesize);
+            waypoints.Enqueue(new Vector2(10, 4) * tilesize);
+            waypoints.Enqueue(new Vector2(11, 3) * tilesize);
+            waypoints.Enqueue(new Vector2(12, 2) * tilesize);
+            waypoints.Enqueue(new Vector2(13, 2) * tilesize);
         }
 
 
@@ -66,6 +80,13 @@ namespace BaseDefender
             tileTextures.Add(texture);
         }
 
+        /* public void ScaleLevelArea(int windowWidth,int windowHeight)
+         {
+             scalefactor.X =windowWidth/(Width);
+             scalefactor.Y=windowHeight/(Height+1);
+            
+         }*/
+
         public void Draw(SpriteBatch batch)
         {
             for (int x = 0; x < Width; x++)
@@ -77,10 +98,14 @@ namespace BaseDefender
                         continue;
 
                     Texture2D texture = tileTextures[textureIndex];
-                    batch.Draw(texture, new Rectangle(x * 32, y * 32, 32, 32), Color.White);
+
+                    batch.Draw(texture, new Rectangle(x * tilesize, y * tilesize, tilesize, tilesize), Color.White);
+                    batch.Draw(texture, new Rectangle(x * tilesize, y * tilesize, tilesize, tilesize), Color.White);
+                    //batch.Draw(texture, new Rectangle((int)(x * scalefactor.X), (int)(y * scalefactor.Y), (int)scalefactor.X, (int)scalefactor.Y), Color.White);
                 }
             }
-            
+            // batch.Draw(tileTextures[2], new Rectangle(1 * tilesize, 0 * tilesize, tilesize, tilesize), Color.White);
+
         }
     }
 }

@@ -19,11 +19,9 @@ namespace BaseDefender
             this.texture = texture;
             this.font = font;
             this.position = position;
-            textPosition = new Vector2(110, position.Y + 10);
+            textPosition = new Vector2(510, position.Y + 10);
         }
-        
-        
-
+                
         public void Draw(SpriteBatch spriteBatch, Player player)
         {
             spriteBatch.Draw(texture, position, Color.White);
