@@ -12,7 +12,7 @@ namespace BaseDefender
     class Player
     {
         private int money = 50;
-        private int lives = 10;
+        private int lives = 1;
 
         private Texture2D[] towerTextures;
 
@@ -144,6 +144,7 @@ namespace BaseDefender
                 selectedTower.UpgradeLevel += 1;
                 money -= 10;
             }
+           // Game1.endText = String.Format("Score : {0}",money);
         }
 
         private bool IsCellClear()

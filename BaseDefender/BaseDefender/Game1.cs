@@ -21,6 +21,8 @@ namespace BaseDefender
             End,
         }
 
+        string endText;
+
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Level level = new Level(50);
@@ -208,6 +210,8 @@ namespace BaseDefender
             {
 		        Texture2D endscreen = Content.Load<Texture2D>("end_screen");
                 menu.DrawEndScreen(spriteBatch, level.Width * 50, lucida,endscreen);
+                endText = String.Format("Your Score is: {0}",player.Money);
+                spriteBatch.DrawString(arial, endText, new Vector2(250,250), Color.Black);
             }
             spriteBatch.End();
 

@@ -149,7 +149,6 @@
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Compile Include="GUI\Spike Tower\spike normal.png">
       <Name>spike normal</Name>
