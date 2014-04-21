@@ -56,7 +56,7 @@ namespace BaseDefender
             bulletSound = content.Load<SoundEffect>("gunShot");
         }
 
-        public Bullet(Texture2D texture, Vector2 position, Vector2 velocity, int speed, int damage)
+        public Bullet(Texture2D texture, Vector2 position, Vector2 velocity, int speed, int damage, ContentManager content)
             : base(texture, position)
         {
             this.rotation = rotation;
@@ -65,6 +65,7 @@ namespace BaseDefender
             this.speed = speed;
 
             this.velocity = velocity * speed;
+            bulletSound = content.Load<SoundEffect>("gunshot");
         }
 
         public void SetRotation(float value)

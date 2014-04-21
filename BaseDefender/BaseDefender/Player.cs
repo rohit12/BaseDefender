@@ -193,7 +193,7 @@ namespace BaseDefender
 
                 case "Spike Tower":
                     {
-                        towerToAdd = new SpikeTower(towerTextures[1], bulletTexture, new Vector2(tileX, tileY));
+                        towerToAdd = new SpikeTower(towerTextures[1], bulletTexture, new Vector2(tileX, tileY),content);
                         break; 
                     }
             }

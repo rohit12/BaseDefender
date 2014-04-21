@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Content;
 
 namespace BaseDefender
 {
@@ -11,13 +12,15 @@ namespace BaseDefender
     {
         private Vector2[] directions = new Vector2[8];
         private List<Enemy> targets = new List<Enemy>();
+        private ContentManager content;
 
-        public SpikeTower(Texture2D texture, Texture2D bulletTexture, Vector2 position) 
+        public SpikeTower(Texture2D texture, Texture2D bulletTexture, Vector2 position, ContentManager content) 
             : base(texture,bulletTexture,position)
         {
             this.damage = 20;
             this.cost = 20;
             this.radius = 50;
+            this.content = content;
             directions = new Vector2[]
             {
                 new Vector2(-1,-1),
@@ -39,7 +42,7 @@ namespace BaseDefender
             {
                 for (int i = 0; i < directions.Length; i++)
                 {
-                    Bullet bullet = new Bullet(bulletTexture, Vector2.Subtract(center, new Vector2(bulletTexture.Width / 2)), directions[i], 6, damage);
+                    Bullet bullet = new Bullet(bulletTexture,Vector2.Subtract(center,new Vector2(bulletTexture.Width/2)),directions[i],6,damage,content);
                     bulletList.Add(bullet);
                 }
                 bulletTimer = 0;

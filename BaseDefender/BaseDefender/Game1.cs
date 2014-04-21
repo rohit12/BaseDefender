@@ -168,9 +168,9 @@ namespace BaseDefender
 
         protected void GameUpdate(GameTime gameTime)
         {
-	        //button1.Update(gameTime);
-            //bool pause = button1.checkPause();
-            //if (!pause)
+	        button1.Update(gameTime);
+            bool pause = button1.checkPause();
+            if (!pause)
 	        {
             	waveManager.Update(gameTime);
             	player.Update(gameTime, waveManager.Enemies);
